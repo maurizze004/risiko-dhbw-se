@@ -1,0 +1,22 @@
+@startuml
+actor Angreifer
+actor Verteidiger
+
+Angreifer -> "Angriff" : deklariereAngriff()
+Angreifer -> "Angriff" : waehleArmeen()
+Angreifer -> "Würfel" : wuerfeln()
+"Würfel" -> "Ergebnis" : gibWuerfelErgebnisse()
+"Ergebnis" -> "Angriff" : auswertungAngriff()
+
+alt Sieg
+    "Angriff" -> Angreifer : updateSieg()
+    Angreifer -> "Angriff" : territoriumErobert()
+    Angreifer -> "Angriff" : bonuskarte()
+else Niederlage
+    "Angriff" -> Angreifer : updateNiederlage()
+    Angreifer -> "Angriff" : truppenverlust()
+end
+
+"Angriff" -> Verteidiger : benachrichtigeVerteidiger()
+
+@enduml

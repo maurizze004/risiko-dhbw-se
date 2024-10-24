@@ -1,0 +1,11 @@
+@startuml
+actor Spieler1
+actor Spieler2
+
+Spieler1 -> Spieler2 : Angebot zum Handel (Karten, Territorien)
+Spieler2 -> Spieler1 : Angebot akzeptiert
+Spieler1 -> Spieler2 : Details des Tauschgeschäfts klären
+Spieler2 -> Spieler1 : Tausch akzeptiert
+Spieler1 -> Spieler2 : Tausch durchführen (Karten, Territorien)
+
+@enduml

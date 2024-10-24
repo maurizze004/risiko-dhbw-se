@@ -1,0 +1,22 @@
+@startuml
+actor Spieler
+participant "Spiel Risiko" as Spiel
+participant "Auftrag" as Auftrag
+participant "Spielstatus" as Status
+
+Spieler -> Spiel : wählt Auftrag
+Spiel -> Auftrag : Auftrag zufällig verteilen
+Auftrag -> Spieler : gibt Auftrag zurück
+
+Spieler -> Auftrag : arbeitet am Auftrag (im Geheimen)
+Spieler -> Auftrag : Auftrag erfüllt?
+
+alt Erfolg
+    Auftrag -> Status : Sieg
+    Status -> Spieler : informiert über Sieg
+else Misserfolg
+    Auftrag -> Status : Spiel wird fortgesetzt
+    Status -> Spieler : neuer Auftrag ziehen
+end
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+actor "Man Selbst" as ManSelbst
+participant "TruppenManagement" as TruppenManagement
+participant "Gebiet" as Gebiet
+participant "Verbindung" as Verbindung
+
+ManSelbst -> TruppenManagement: wähleGebiet()
+TruppenManagement -> Gebiet: zeigeBesitz()
+ManSelbst -> Verbindung: prüfeVerbindung()
+Verbindung -> TruppenManagement: direkteVerbindungPrüfen()
+
+alt [Verbindung vorhanden]
+    ManSelbst -> TruppenManagement: wähleTruppenanzahl()
+    ManSelbst -> TruppenManagement: bestätigeVerschiebung()
+    TruppenManagement -> ManSelbst: aktualisiereTruppen()
+else [Keine Verbindung]
+    TruppenManagement -> ManSelbst: zeigeFehler("Keine direkte Verbindung")
+end
+
+@enduml

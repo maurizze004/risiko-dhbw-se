@@ -1,0 +1,61 @@
+@startuml
+
+class Spieler {
+    + Spieler_ID: Integer
+    + Spieler_Name: String
+    + Farbe: Enum
+    + Einheiten: Integer
+    + Gebiete: List<Gebiet>
+    + Bonuskarten: List<Bonuskarten>
+    + Kontinente: List<Kontinent>
+    + angreifen(target: Gebiet, anzahl: Integer): Boolean
+    + verstärken(gebiet: Gebiet, anzahl: Integer): void
+    + verschieben(gebiet: Gebiet, anzahl: Integer, armee: Armee): void
+    + handeln(karten: Bonuskarten, armee: Armee): void
+}
+
+enum Bonuskarte {
+    + Name: String
+    + Typ: <<Truppentyp>>
+}
+
+class Gebiet {
+    + Gebiet_Name: String
+    + Besitzer: Spieler
+    + Nachbarn: List<Gebiet>
+    + Einheiten: Integer
+    + wirdBevölkert(anzahl: Integer): void
+    + verlust(einheiten: Integer): void
+}
+
+class Kontinent {
+    + Kontinent_Name: String
+    + Gebiete: List<Gebiet>
+    + Bonus: Integer
+}
+
+class Spiel {
+    + Spieler: List<Spieler>
+    + Gebiete: List<Gebiet>
+    + Kontinente: List<Kontinent>
+    + starten(): void
+    + beenden(): void
+}
+
+class Armee {
+    + Truppentyp: <<Truppentyp>>
+}
+
+class Truppentyp {
+    + Typ: String
+    + Einheit: Integer
+}
+
+Spieler "1" -- "0..*" Gebiet : besitzt >
+Spieler "0..1" -- "0..*" Kontinent : kontrolliert >
+Kontinent "1  " *-- "0..*" Gebiet
+Armee <|-- Truppentyp
+Bonuskarte "0..*" -- "0..1" Spieler : besitzt >
+Spieler "1" -- "0..*" Armee : besitzt >
+
+@enduml
