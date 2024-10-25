@@ -1,5 +1,5 @@
 This is made by <br>
-    - Pascal Grimm
-    - Dominik Remmele
-    - Bendix Greiner
-    - Maurice Baumann
+    - Pascal Grimm <br>
+    - Dominik Remmele <br>
+    - Bendix Greiner <br>
+    - Maurice Baumann <br>
