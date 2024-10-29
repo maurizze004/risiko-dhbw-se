@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Risiko</title>
+</head>
+
+<style>
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+    background-color: lightgrey;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+  }
+  ol{
+    font-size: 20px;
+  }
+  p {
+    font-size: 20px;
+  }
+
+  .title {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+    background-color: whitesmoke;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+  }
+  body {
+    background-color: whitesmoke;
+  }
+
+  img {
+    margin-bottom: 25px;
+  }
+</style>
+
+<body>
+<div class="card">
+  <h1 class="title">Spielablauf</h1>
+  <ol>
+    <li>Spieler bekommt eine Anzahl von Truppen abhängig von der Anzahl seiner eigenen Gebiete</li>
+    <li>Spieler verteilet seine verfügbaren Gruppen auf seinen eigenen Gebieten</li>
+    <li>Spieler wählt ein Gebiet aus mit dem er angreifen möchte</li>
+    <p style="margin-top: -0.5px">- Bedingung hierbei ist das sich mindestens 2 Truppen auf dem Gebiet befinden und ein direkter Weg zum "feindlichen" Gebiet vorhanden ist</p>
+    <li style="margin-top: -11px">Angriff startet</li>
+    <li>Angreifer wählt Anzahl der Angreifenden Truppen aus und würfelt abhängig davon mit 1-3 Würfeln --> Punktzahl wird sich gemerkt</li>
+    <li>Verteidiger würfelt mit der maximalen Anzahl an Würfeln die ihm zur Verfügung stehen</li>
+    <li>Falls Angreifer gewinnt geht das Gebiet an ihn über und er darf Truppen aus dem "angreifenden" Gebiet verschieben. WICHTIG: in beiden Gebieten müssen mindestens eine Truppe vorhanden sein</li>
+    <li>Wenn Verteidiger den Angriff gewinnt, behält er das Gebiet und der Angreifer verliert seine ausgewählten Truppen</li>
+    <li>Im Falle einer Eroberung bekommt der Angreifer eine Gebietskarte, diese Karte kann er behalten und im späteren Verlauf des Spieles eintauschen für Truppen</li>
+  </ol>
+</div>
+
+<div class="card" style="margin-top: 30px">
+<h1 class="title">Use Cases und deren Sequenzdiagramme</h1>
+  <h3 class="title">Angriff</h3>
+  <div style="display: flex; flex-direction: row; justify-content: space-around;">
+    <img src="attac.png" style="width: 50%; height: auto">
+    <img src="https://github.com/maurizze004/risiko-dhbw-se/blob/main/Images/Angriff.jpg?raw=true" style="width: 39%">
+  </div>
+
+  <h3 class="title">Armee verschieben</h3>
+  <div style="display: flex; flex-direction: row; justify-content: space-around;">
+    <img src="versch.png" style="width: 50%; height: auto">
+    <img src="https://github.com/maurizze004/risiko-dhbw-se/blob/main/Images/Verschieben.jpg?raw=true" style="width: 39%">
+  </div>
+
+  <h3 class="title">Bonuskarten eintauschen</h3>
+  <div style="display: flex; flex-direction: row; justify-content: space-around;">
+    <img style="width: 50%; height: auto" src="tausch.png">
+    <img src="https://github.com/maurizze004/risiko-dhbw-se/blob/main/Images/Kartentausch.jpg?raw=true" style="width: 39%">
+  </div>
+
+  <h3 class="title">Handeln</h3>
+  <div style="display: flex; flex-direction: row; justify-content: space-around;">
+    <img style="width: 50%; height: auto" src="handel.png">
+    <img src="https://github.com/maurizze004/risiko-dhbw-se/blob/main/Images/Kartenhandel.jpg?raw=true" style="width: 39%">
+  </div>
+
+  <h3 class="title">Auftrag erf&uuml;llen</h3>
+  <div style="display: flex; flex-direction: row; justify-content: space-around;">
+    <img style="width: 50%; height: auto" src="auftrag.png">
+    <img src="https://github.com/maurizze004/risiko-dhbw-se/blob/main/Images/Auftrag%20erfüllen.png?raw=true" width="39%">
+  </div>
+</div>
+
+<div class="card" style="margin-top: 30px">
+  <h1 class="title">Klassendiagramm</h1>
+  <img src="Klassendiagramm.png" style="width: 40%; height: auto; margin: 10px">
+</div>
+
+<div class="card" style="margin-top: 30px">
+  <h1 class="title">Trello Board</h1>
+  <img src="trello.png" style="width: 75%; height: auto; margin: 10px">
+</div>
+
+<div class="card" style="margin-top: 30px">
+  <img src="repo-qr.png" style="width: 20%; height: auto; margin: 10px">
+</div>
+</body>
+</html>
