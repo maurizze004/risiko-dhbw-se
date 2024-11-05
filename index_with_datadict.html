@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Risiko</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./Images/favicon-32x32.png">
+</head>
+
+<style>
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+    background-color: lightgrey;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+  }
+  ol{
+    font-size: 20px;
+  }
+  ul {
+    font-size: 20px;
+    list-style-type: none;
+  }
+  p {
+    font-size: 20px;
+  }
+
+  .title {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+    background-color: whitesmoke;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+  }
+  body {
+    background-color: whitesmoke;
+    font-size: 20px;
+  }
+  th{
+    font-size: 22px;
+    color: black;
+  }
+  img {
+    margin-bottom: 25px;
+  }
+
+  tr:hover {background-color: #D6EEEE;}
+
+  table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+} 
+
+</style>
+
+<body>
+<div class="card">
+  <h1 class="title">Spielablauf</h1>
+  <ol>
+    <li>Spieler bekommt eine Anzahl von Truppen abhängig von der Anzahl seiner eigenen Gebiete</li>
+    <li>Spieler verteilet seine verfügbaren Gruppen auf seinen eigenen Gebieten</li>
+    <li>Spieler wählt ein Gebiet aus mit dem er angreifen möchte</li>
+    <p style="margin-top: -0.5px">- Bedingung hierbei ist das sich mindestens 2 Truppen auf dem Gebiet befinden und ein direkter Weg zum "feindlichen" Gebiet vorhanden ist</p>
+    <li style="margin-top: -11px">Angriff startet</li>
+    <li>Angreifer wählt Anzahl der Angreifenden Truppen aus und würfelt abhängig davon mit 1-3 Würfeln --> Punktzahl wird sich gemerkt</li>
+    <li>Verteidiger würfelt mit der maximalen Anzahl an Würfeln die ihm zur Verfügung stehen</li>
+    <li>Falls Angreifer gewinnt geht das Gebiet an ihn über und er darf Truppen aus dem "angreifenden" Gebiet verschieben. WICHTIG: in beiden Gebieten müssen mindestens eine Truppe vorhanden sein</li>
+    <li>Wenn Verteidiger den Angriff gewinnt, behält er das Gebiet und der Angreifer verliert seine ausgewählten Truppen</li>
+    <li>Im Falle einer Eroberung bekommt der Angreifer eine Gebietskarte, diese Karte kann er behalten und im späteren Verlauf des Spieles eintauschen für Truppen</li>
+  </ol>
+</div>
+
+<div class="card" style="margin-top: 30px">
+  <h1 class="title">Data Dictionary</h1>
+  <table border="1">
+    <tr style="text-align: center;">
+      <th>Name</th>
+      <th>Beschreibung</th>
+      <th>Eigenschaften</th>
+      <th>Verwendung</th>
+      <th>Instanzen</th>
+    </tr>
+    <tr>
+      <td>Spiel</td>
+      <td>Eine Partie RISIKO, mit einer zu Beginn definierten Anzahl an Spielern. Das Spiel endet sobald ein Spieler seinen Auftrag erfüllt oder alle Gebiete erobert hat. Die Spieleranzahl muss zwischen 2-5 Personen liegen. Die Anzahl der Runden ist offen und hängt von der Länge des Spiels ab.</td>
+      <td>
+        <ul>
+          <li>Name</li>
+        </ul>
+      </td>
+      <td>Wird verwendet um das Spiel durchführen zu können</td>
+      <td style="text-align: center;">1</td>
+    </tr>
+    <tr>
+      <td>Runde</td>
+      <td>Jeder Spieler macht der Reihe nach einen Zug. Dabei wird im Normalfall von jedem Spieler verschiedene Aktionen durchgeführt.</td>
+      <td>
+        <ul>
+          <li>Anzahl</li>
+        </ul>
+      </td>
+      <td>Ablauf eines Spiels indem alle Spieler ihre Angriffe durchführen</td>
+      <td style="text-align: center;"></td>
+    </tr>
+    <tr>
+      <td>Spieler (Mitspieler)</td>
+      <td>Angemeldete Spieler, können an beliebig vielen Spielen teilnehmen. Jeder Spieler hat in einem Spiel einen Auftrag zu erledigen.</td>
+      <td>
+        <ul>
+          <li>Anzahl</li>
+          <li>Name</li>
+        </ul>
+      </td>
+      <td>Spieler wird benötigt damit das Spiel durchgeführt wird</td>
+      <td style="text-align: center;">2-5</td>
+    </tr>
+    <tr>
+      <td>Gebietskarte</td>
+      <td>Eine Gebietskarte bekommt derjenige Spieler ausgehändigt, der ein Gebiet erobert Diese Karte enthält eine Truppe, die dem jeweiligen zugewiesen wird.</td>
+      <td>
+        <ul>
+          <li>Gebiet</li>
+          <li>Truppentyp</li>
+          <li>Farbe</li>
+        </ul>
+      </td>
+      <td>Eine Gebietskarte wird verwendet um den Spielern neue Truppen zur Verfügung zu stellen</td>
+      <td style="text-align: center;">42</td>
+    </tr>
+    <tr>
+      <td>Missionskarte</td>
+      <td>Eine Missionskarte bekommt jeder Spieler zu Beginn. Auf der Karte wird beschrieben welche Mission ein Spieler zu erledigen hat um das Spiel zu gewinnen.</td>
+      <td>
+        <ul>
+          <li>Hauptmission</li>
+          <li>Nebenmission</li>
+          <li>Farbe</li>
+        </ul>
+      </td>
+      <td>Eine Missionskarte wird verwendet um den Spielern eine Aufgabe zu geben mit der er das Spiel gewinnen kann</td>
+      <td style="text-align: center;">12</td>
+    </tr>
+    <tr>
+      <td>Truppe</td>
+      <td>Eine Truppe wird vom Spieler benutzt um Gebiete anzugreifen oder eigene Gebiete zu verteidigen. Es gibt drei Arten von Truppen (Kavallerie, Infanterie, Artillerie) welche sich in ihrer Truppenstärke unterscheiden.</td>
+      <td>
+        <ul>
+          <li>Farbe</li>
+          <li>Typ</li>
+        </ul>
+      </td>
+      <td>Die Truppe wird verwendet um andere Spieler anzugreifen bzw. sich zu verteidigen. Mit ihnen werden die verschiedenen Gebiete besetzt.</td>
+      <td style="text-align: center;">1,5,10</td>
+    </tr>
+    <tr>
+      <td>Kontinent</td>
+      <td>Ein Kontinent besteht aus mehreren Gebieten.</td>
+      <td>
+        <ul>
+          <li>Farbe</li>
+          <li>Anzahl Gebiete</li>
+          <li>Anzahl Wege</li>
+        </ul>
+      </td>
+      <td>Ein Kontinent dient als Sammelort für verschiedene Gebiete. Durch eine Eroberung eines Kontinents können Spielern Bonustrupen erhalten werden.</td>
+      <td style="text-align: center;">1</td>
+    </tr>
+    <tr>
+      <td>Gebiet</td>
+      <td>Ein Gebiet liegt auf einem Kontinent. Es ist immer nur einem Spieler zugeordnet und kann von anderen Spielern erobert werden. Ein Gebiet enthält eine Armee die aus einer Anzahl von Truppen besteht.</td>
+      <td>
+        <ul>
+          <li>Farbe</li>
+          <li>Truppenstärke</li>
+          <li>Nachbargebiete</li>
+        </ul>
+      </td>
+      <td>Ein Gebiet wird verwendet um Truppen "abzulegen". Um Angriffstartpunkte festzulegen.</td>
+      <td style="text-align: center;">42</td>
+    </tr>
+    <tr>
+      <td>Kampf</td>
+      <td>Ein Kampf besteht aus einem Angreifer und einem Verteidiger. Der Angreifer wählt die Anzahl der Truppen und würfelt auf Anzahl dieser seine Punktzahl. Der Verteidiger würfelt auf Anzahl seiner ganzen Truppen. Der Spieler mit der höheren Punktzahl gewinnt und darf das Gebiet behalten.
+      <td>
+        <ul>
+          <li>Angreifer</li>
+          <li>Verteidiger</li>
+          <li>Anzahl Angreifertruppen</li>
+          <li>Anzahl Verteidigertruppen</li>
+          <li>Punktzahl</li>
+        </ul>
+      </td>
+        <td>In einem Kampf wird entschieden ob ein Spieler (Angreifer) das Gebiet eines anderen Spieler (Verteidiger) erobert.</td>
+        <td style="text-align: center;">1-n</td>
+    </tr>
+  </table>
+</div>
+
+<div class="card" style="margin-top: 30px">
+<h1 class="title">Use Cases und deren Sequenzdiagramme</h1>
+  <h3 class="title">Angriff</h3>
+  <div style="display: flex; flex-direction: row; justify-content: space-around;">
+    <img src="attac.png" style="width: 50%; height: auto">
+    <img src="https://github.com/maurizze004/risiko-dhbw-se/blob/main/Images/Angriff.jpg?raw=true" style="width: 39%">
+  </div>
+
+  <h3 class="title">Armee verschieben</h3>
+  <div style="display: flex; flex-direction: row; justify-content: space-around;">
+    <img src="versch.png" style="width: 50%; height: auto">
+    <img src="https://github.com/maurizze004/risiko-dhbw-se/blob/main/Images/Verschieben.jpg?raw=true" style="width: 39%">
+  </div>
+
+  <h3 class="title">Bonuskarten eintauschen</h3>
+  <div style="display: flex; flex-direction: row; justify-content: space-around;">
+    <img style="width: 50%; height: auto" src="tausch.png">
+    <img src="https://github.com/maurizze004/risiko-dhbw-se/blob/main/Images/Kartentausch.jpg?raw=true" style="width: 39%">
+  </div>
+
+  <h3 class="title">Handeln</h3>
+  <div style="display: flex; flex-direction: row; justify-content: space-around;">
+    <img style="width: 50%; height: auto" src="handel.png">
+    <img src="https://github.com/maurizze004/risiko-dhbw-se/blob/main/Images/Kartenhandel.jpg?raw=true" style="width: 39%">
+  </div>
+
+  <h3 class="title">Auftrag erf&uuml;llen</h3>
+  <div style="display: flex; flex-direction: row; justify-content: space-around;">
+    <img style="width: 50%; height: auto" src="auftrag.png">
+    <img src="https://github.com/maurizze004/risiko-dhbw-se/blob/main/Images/Auftrag%20erfüllen.png?raw=true" width="39%">
+  </div>
+</div>
+
+<div class="card" style="margin-top: 30px">
+  <h1 class="title">Klassendiagramm</h1>
+  <img src="Klassendiagramm.png" style="width: 40%; height: auto; margin: 10px">
+</div>
+
+<div class="card" style="margin-top: 30px">
+  <h1 class="title">Trello Board</h1>
+  <img src="trello.png" style="width: 75%; height: auto; margin: 10px">
+</div>
+
+<div class="card" style="margin-top: 30px">
+  <img src="repo-qr.png" style="width: 20%; height: auto; margin: 10px">
+</div>
+</body>
+</html>
